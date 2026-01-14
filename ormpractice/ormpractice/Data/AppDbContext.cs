@@ -16,7 +16,12 @@ public class AppDbContext: DbContext
     {
         optionsBuilder.UseSqlServer("Server=localhost,1433;Database=ConsoleAppDb2;User Id=sa;Password=CodeWithArjun123;TrustServerCertificate=True;");
     }
-    
+
+    override protected void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        base.OnModelCreating(modelBuilder);
+    }
     
     
 }
